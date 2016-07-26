@@ -120,8 +120,6 @@
             </div>
         </div>
         <script type="text/javascript">
-            var btn = document.getElementById("btn");
-
             function get() {
                 var title = encodeURIComponent(document.getElementById("title").value);
                 var desc = encodeURIComponent(document.getElementById("desc").value);
@@ -130,20 +128,21 @@
                 var year = document.getElementById("year").value;
 
                 document.getElementById("form").innerHTML =
-                    "<input id='url' class='cont__form__url' type='text' value='" +
+                    "<input id='url' class='cont__form__url' type='text'></input>";
+                
+                document.getElementById("url").value = 
                     "http://api.csaas.xyz/?title=" + title +
                     "&desc=" + desc +
                     "&month=" + month +
                     "&day=" + day +
-                    "&year=" + year +
-                    "'></input>";
+                    "&year=" + year;
 
                 document.getElementById("url").select();
             }
             
-            btn.addEventListener("click", function() {
+            document.getElementById("btn").addEventListener("click", function() {
+                this.style.display = "none"; 
                 get();
-                btn.style.display = "none"; 
             });
         </script>
     </body>
