@@ -28,9 +28,19 @@ body {
         line-height: 1.5; 
         margin-bottom: 20px;
     }
+    .cont__foot {
+        font-size: 14px;
+        padding-top: 20px; 
+    }
+        .cont__foot a {
+            text-decoration: none;
+            font-weight: bold;
+            color: inherit;
+        }
     .cont__form {
         padding: 10px; 
         background-color: #f0f0f0;
+        word-wrap: break-word; 
     }
         .cont__form__label {
             color: #777;
@@ -38,7 +48,7 @@ body {
             display: block;
             margin-bottom: 5px; 
         }
-        .cont__form__input, .cont__form__tarea {
+        .cont__form__input, .cont__form__tarea, .cont__form__url {
             display: block;
             width: 100%;
             font-size: 18px;
@@ -49,9 +59,12 @@ body {
             border: 1px solid #ccc;
             margin-bottom: 10px;
         }
-            .cont__form__input:focus, .cont__form__tarea:focus {
+            .cont__form__input:focus, .cont__form__tarea:focus, .cont__form__url:focus {
                 border: 1px solid #999;
             }
+        .cont__form__url {
+            margin-bottom: 0;
+        }
         .cont__form__btn {
             background-color: #588cd0;
             padding: 10px 0;

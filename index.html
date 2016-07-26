@@ -19,7 +19,7 @@
                 Just create your page using the form below, forward your 
                 domain to the generated URL, and you're done! 
             </div> 
-            <div class="cont__form">
+            <div class="cont__form" id="form">
                 <label class="cont__form__label" for="title">Title</label>
                 <input class="cont__form__input" type="text" name="title" id="title" placeholder="What's coming soon?" autofocus></input> 
             
@@ -28,7 +28,7 @@
 
                 <label class="cont__form__label">Completion Date</label>
                 <div class="date">
-                    <select class="date__picker date__picker--month">
+                    <select class="date__picker date__picker--month" id="month">
                         <option value="1">January</option>
                         <option value="2">February</option>
                         <option value="3">March</option>
@@ -42,7 +42,7 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
-                    <select class="date__picker date__picker--day">
+                    <select class="date__picker date__picker--day" id="day">
                         <option value="1">1st</option>
                         <option value="2">2nd</option>
                         <option value="3">3rd</option>
@@ -75,7 +75,7 @@
                         <option value="30">30th</option>
                         <option value="31">31st</option>
                     </select>
-                    <select class="date__picker date__picker--year">
+                    <select class="date__picker date__picker--year" id="year">
                         <option value="2016">2016</option>
                         <option value="2017">2017</option>
                         <option value="2018">2018</option>
@@ -114,7 +114,37 @@
                     </select>
                 </div> 
             </div>
-            <div class="cont__form__btn">Get URL</div>
-        </div>       
+            <div class="cont__form__btn" id="btn">Get URL</div>
+            <div class="cont__foot">
+                Created by <a href="https://github.com/karlmcguire">Karl McGuire</a>. All contributions welcome.
+            </div>
+        </div>
+        <script type="text/javascript">
+            var btn = document.getElementById("btn");
+
+            function get() {
+                var title = encodeURIComponent(document.getElementById("title").value);
+                var desc = encodeURIComponent(document.getElementById("desc").value);
+                var month = document.getElementById("month").value; 
+                var day = document.getElementById("day").value;
+                var year = document.getElementById("year").value;
+
+                document.getElementById("form").innerHTML =
+                    "<input id='url' class='cont__form__url' type='text' value='" +
+                    "http://api.csaas.xyz/?title=" + title +
+                    "&desc=" + desc +
+                    "&month=" + month +
+                    "&day=" + day +
+                    "&year=" + year +
+                    "'></input>";
+
+                document.getElementById("url").select();
+            }
+            
+            btn.addEventListener("click", function() {
+                get();
+                btn.style.display = "none"; 
+            });
+        </script>
     </body>
 </html>
