@@ -120,30 +120,51 @@
             </div>
         </div>
         <script type="text/javascript">
+            var title = document.getElementById("title");
+            var desc = document.getElementById("desc");
+            var month = document.getElementById("month"); 
+            var day = document.getElementById("day");
+            var year = document.getElementById("year");
+            var btn = document.getElementById("btn");
+
             function get() {
-                var title = encodeURIComponent(document.getElementById("title").value);
-                var desc = encodeURIComponent(document.getElementById("desc").value);
-                var month = document.getElementById("month").value; 
-                var day = document.getElementById("day").value;
-                var year = document.getElementById("year").value;
+                var titleVal = encodeURIComponent(title.value);
+                var descVal = encodeURIComponent(desc.value);
+                var monthVal = month.value;
+                var dayVal = day.value;
+                var yearVal = year.value;
+
+                if(titleVal.length == 0) {
+                    title.style.border = "1px solid #e28888";
+                    title.focus();
+                    return; 
+                }
+
+                if(descVal.length == 0) {
+                    desc.style.border = "1px solid #e28888";
+                    desc.focus();
+                    return;
+                }
+                
+                btn.style.display = "none"; 
 
                 document.getElementById("form").innerHTML =
-                    "<input id='url' class='cont__form__url' type='text'></input>";
+                    "<input id='url' class='cont__form__url' type='text' spellcheck='false'></input>";
                 
                 document.getElementById("url").value = 
-                    "http://api.csaas.xyz/?title=" + title +
-                    "&desc=" + desc +
-                    "&month=" + month +
-                    "&day=" + day +
-                    "&year=" + year;
+                    "http://api.csaas.xyz/?title=" + titleVal +
+                    "&desc=" + descVal +
+                    "&month=" + monthVal +
+                    "&day=" + dayVal +
+                    "&year=" + yearVal;
 
                 document.getElementById("url").select();
             }
             
-            document.getElementById("btn").addEventListener("click", function() {
-                this.style.display = "none"; 
+            btn.addEventListener("click", function() {
                 get();
             });
+
         </script>
     </body>
 </html>
