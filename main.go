@@ -92,7 +92,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 }
 
 var FAVICON []byte
-var CSS []byte
 
 func init() {
 	var err error
@@ -100,19 +99,11 @@ func init() {
 	if FAVICON, err = ioutil.ReadFile("static/favicon.ico"); err != nil {
 		panic(err)
 	}
-
-	if CSS, err = ioutil.ReadFile("static/page.css"); err != nil {
-		panic(err)
-	}
 }
 
 func main() {
 	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
 		w.Write(FAVICON)
-	})
-
-	http.HandleFunc("/page.css", func(w http.ResponseWriter, r *http.Request) {
-		w.Write(CSS)
 	})
 
 	http.HandleFunc("/", Handler)
